@@ -1,0 +1,692 @@
+/* Variables pour les couleurs et transitions réutilisables */
+:root {
+  --primary-color: #043617;
+  --secondary-color: #4b7e5f;
+  --white-color: #ffffff;
+  --hover-transition: 0.3s ease;
+}
+
+/* Global styles for the header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 10px 20px;
+  background: none; /* Pas de fond */
+  z-index: 100;
+}
+
+/* Logo styles */
+.header .logo img {
+  height: 50px; /* Ajustez la taille du logo */
+  max-height: 70px;
+  object-fit: contain;
+  position: relative; /* Permet de superposer le logo si nécessaire */
+  z-index: 101;
+}
+
+/* Navigation menu styles */
+.header .navigation ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.header .navigation ul li {
+  margin: 0 120px;
+}
+
+.header .navigation ul li a {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-size: 16px;
+  font-family: 'zenithbook';
+  position: relative;
+  display: inline-block;
+  transition: color var(--hover-transition), transform var(--hover-transition);
+}
+
+.header .navigation ul li a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px; /* Position sous le texte */
+  width: 0;
+  height: 1px; /* Épaisseur de la ligne */
+  background-color: var(--secondary-color);
+  transition: width var(--hover-transition);
+}
+
+.header .navigation ul li a:hover {
+  color: var(--secondary-color);
+  transform: translateY(-3px); /* Légère remontée du texte */
+}
+
+.header .navigation ul li a:hover::after {
+  width: 100%; /* Barre qui s'étend sur toute la largeur */
+}
+
+body{
+  display: grid;
+  gap: 40px;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh; /* Prend toute la hauteur de la fenêtre */
+  background: url('img/hero-bg.jpg') center/cover no-repeat;
+  color: var(--primary-color);
+  display: flex;
+  flex-direction: column; /* Organise le contenu verticalement */
+  justify-content: space-between; /* Écarte les éléments vers le haut et le bas */
+  align-items: center; /* Centre les éléments horizontalement */
+  text-align: center;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  margin-top: 0px; /* Décalage sous la bande du haut */
+}
+
+.hero-content h1 {
+  font-family: 'Raleway', sans-serif; /* Police principale */
+  font-weight: 300; /* Style léger pour un look moderne */
+  font-size: 60px; /* Taille ajustée */
+  text-transform: uppercase; /* Facultatif, pour un style propre */
+  letter-spacing: 0.1em; /* Espacement des lettres pour respirer */
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  transition: color var(--hover-transition), transform var(--hover-transition); /* Effet de transition fluide */
+}
+
+.hero-content h1:hover {
+  color: var(--secondary-color); /* Couleur lors du survol */
+  transform: translateY(-3px); /* Légère remontée sur le survol */
+}
+
+.hero-content h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.hero-content h1:hover::after {
+  transform: scaleX(1);
+  background: var(--secondary-color); /* Même couleur que la nouvelle couleur du texte */
+}
+
+.hero-content p {
+  font-size: 1.2em;
+  margin: 15px 0; /* Espacement entre le titre et le sous-titre */
+}
+.grid1{
+  display: grid;
+  position: relative;
+  top: -28%;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px; /* Évite d'utiliser margin pour l'espacement */
+}
+
+.grid1 a {
+  text-decoration: none; /* Supprime les soulignements par défaut */
+  display: block; /* Assure que les liens occupent tout l’espace des blocs */
+  color: inherit; /* Hérite des couleurs définies dans le style du texte */
+}
+
+
+.a,.b,.c,.d,.e,.f{
+  position: relative;
+  background: none;
+  overflow: hidden; /* Assure que l'image reste dans les limites */
+  height: 200px;
+  width: 350px;
+  border-radius: 5px;
+  text-align: center; /* Centrer le texte */
+}
+
+.a img, .b img, .c img, .d img, .e img, .f img {
+  width: 100%; /* Ajuste l'image à la largeur du bloc */
+  height: 100%; /* Ajuste l'image à la hauteur du bloc */
+  object-fit: cover; /* Garde les proportions tout en remplissant le bloc */
+  filter: grayscale(100%); /* Applique un effet noir et blanc */
+  transition: transform var(--hover-transition), filter var(--hover-transition); /* Transition douce pour le retour de la couleur */
+}
+
+/* Couche semi-transparente */
+.a::before, .b::before, .c::before, .d::before, .e::before, .f::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(75, 126, 95, 0.3); /* Couleur de base monochrome avec transparence */
+  transition: background-color var(--hover-transition); /* Transition douce pour le changement de couleur */
+  z-index: 1; /* Place au-dessus de l'image */
+}
+
+/* Effet au survol */
+.a:hover::before, .b:hover::before, .c:hover::before, .d:hover::before, .e:hover::before, .f:hover::before {
+  background: rgba(4, 54, 23, 0.7); /* Change la couleur au survol */
+}
+
+.a:hover img, .b:hover img, .c:hover img, .d:hover img, .e:hover img, .f:hover img {
+  transform: scale(1.1); /* Zoom léger */
+  filter: grayscale(80%); /* Restaure les couleurs au survol */
+
+}
+
+/* Texte descriptif */
+.a p, .b p, .c p, .d p, .e p, .f p {
+  position: absolute;
+  bottom: 10px; /* Place le texte en bas */
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 5px 0;
+  color: var(--white-color); /* Texte blanc */
+  font-size: 16px;
+  font-family: 'Raleway', sans-serif;
+  opacity: 0; /* Texte caché par défaut */
+  transform: translateY(20px); /* Décalage vers le bas pour l'animation */
+  transition: opacity var(--hover-transition), transform var(--hover-transition); /* Animation douce pour l'apparition */
+  z-index: 2; /* Place le texte au-dessus de la couche colorée */
+}
+
+.a:hover p, .b:hover p, .c:hover p, .d:hover p, .e:hover p, .f:hover p {
+  opacity: 1; /* Texte visible au survol */
+  transform: translateY(0); /* Remonte le texte à sa position normale */
+}
+
+.projects-section {
+  display: flex;
+  flex-direction: row; /* Assurez-vous que les projets sont alignés horizontalement */
+  flex-wrap: wrap; /* Permet aux projets de se déplacer à la ligne suivante si nécessaire */
+  justify-content: space-between; /* Ajoute de l'espace entre les projets */
+  align-items: center; /* Centre les projets verticalement */
+  width: 100%; /* Prend toute la largeur de l'écran */
+  margin: 0; /* Supprime les marges */
+  padding: 0px; /* Supprime les espacements internes */
+  overflow-x: hidden; /* Évite les débordements horizontaux */
+}
+
+
+/* Exemple de style pour le bouton "Voir tous mes projets" */
+.projects-section .view-all-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: rgba(75, 126, 95, 0.7); /* Couleur verte transparente */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: 'Raleway', sans-serif;
+  transition: background-color 0.3s ease;
+
+}
+
+.projects {
+  display: flex;
+  flex-direction: row;
+  scroll-snap-type: y mandatory;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  height: auto; /* Ajuster la hauteur automatiquement en fonction du contenu */
+}
+
+/* Projet en pleine page */
+.project {
+  position: relative;
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start;
+  opacity: 0;
+  transform: translateX(-100px); /* Position initiale en dehors de l'écran (gauche) */
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.project-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+.project-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(4, 54, 23, 0.4); /* Couche semi-transparente */
+  opacity: 1; /* Visible par défaut */
+  transition: opacity 0.3s ease;
+  z-index: 1; /* Au-dessus de l'image, sous le texte */
+}
+
+.project:hover .project-content::before {
+  opacity: 0; /* Devient transparent au survol */
+}
+
+/* Placez le texte au-dessus de cette couche */
+.overlay {
+  z-index: 2; /* Au-dessus de la couche transparente */
+}
+
+.project img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%); /* Noir et blanc par défaut */
+  transition: transform 0.5s ease-out, filter 0.5s ease-out; /* Transition douce */
+}
+
+/* Effet au survol */
+.project:hover img {
+  transform: scale(1.1); /* Zoom léger */
+  filter: grayscale(0%); /* Retour à la couleur normale */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(132, 130, 130, 0.3);
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.project:hover .overlay {
+  opacity: 1; /* Affiche l'overlay au survol */
+}
+
+.project-title {
+  color: white;
+  font-size: 52px;
+  margin: 0;
+}
+
+.project-year {
+  color: white;
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+/* Animation d'entrée depuis la gauche ou la droite */
+.project[data-animation="from-left"] {
+  transform: translateX(-50px); /* Déplacement initial */
+}
+
+.project[data-animation="from-right"] {
+  transform: translateX(-50px); /* Déplacement initial */
+}
+
+.project.animate {
+  opacity: 1;
+  transform: translateX(0); /* Revenez à la position normale */
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+
+/* Bouton "Explorez mes créations" */
+.scroll-down {
+  font-family: 'raleway', sans-serif;
+  position: fixed;
+  bottom: 20px; /* Place le bouton à 15px depuis le bas */
+  left: 50%; /* Centre horizontalement */
+  transform: translateX(-50%); /* Ajuste parfaitement le centrage */
+  display: block;
+  color: #043617;
+  text-decoration: none;
+  border: 2px solid #043617;
+  padding: 10px 20px;
+  border-radius: 2px;
+  transition: 
+    background-color 0.5s ease, 
+    color 0.5s ease, 
+    transform 0.5s ease; /* Transition douce pour la transformation */
+  opacity: 1; /* Complètement visible par défaut */
+  visibility: visible; /* Assure que le bouton est interactif */
+  overflow: hidden; /* Pour les éléments internes animés */
+}
+.scroll-down.hidden {
+  opacity: 0; /* Rend le bouton transparent */
+  visibility: hidden; /* Rend le bouton non interactif */
+  pointer-events: none; /* Désactive les clics */
+  transition: opacity 0.5s ease; /* Transition douce pour l'apparition et la disparition */
+}
+
+.scroll-down:hover {
+  background-color: #4b7e5f; /* Change la couleur du fond */
+  color: white; /* Change la couleur du texte */
+  border-color: #4b7e5f; /* Harmonisation de la bordure */
+  transform: translateX(-50%) translateY(-5px); /* Légère élévation */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Ajoute une ombre subtile */
+}
+
+/* Effet d’onde subtile au survol */
+.scroll-down::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%; /* Forme circulaire */
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease; /* Animation douce */
+  z-index: -1; /* Derrière le texte */
+}
+
+.scroll-down:hover::before {
+  width: 300%; /* Expansion progressive */
+  height: 300%; /* Expansion progressive */
+}
+
+.scroll-down a {
+  text-decoration: none; /* Supprime le soulignement */
+  color: inherit; /* Hérite de la couleur du bouton */
+}
+
+.scroll-down a:visited {
+  color: inherit; /* Maintient la couleur par défaut */
+}
+
+.scroll-down a:hover {
+  color: white; /* Texte blanc au survol */
+}
+
+.scroll-down a:focus {
+  outline: none; /* Supprime le contour bleu ou violet lors du clic */
+  
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  color: #043617;
+}
+
+
+@media (max-width: 480px) {
+  .grid1 {
+    grid-template-columns: 1fr; /* Une seule colonne sur mobile */
+  }
+  .hero-content h1 {
+    font-size: 36px; /* Réduction de la taille de la police */
+  }
+  .header .navigation ul li {
+    margin: 0 10px; /* Espacement réduit pour éviter les débordements */
+  }
+}
+
+.a-propos {
+  background: url('img/new-project-bg.jpg') center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.a-propos .a-propos-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;  /* Augmente cette valeur pour abaisser le contenu */
+}
+
+.a-propos .a-propos-content h1 {
+  font-size: 60px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: #4b7e5f;
+  margin-bottom: 40px; /* Ajuste la valeur pour contrôler l'espacement */
+}
+
+.a-propos .a-propos-content p {
+  font-size: 20px;
+  color: #043617;
+  max-width: 600px;
+  margin-top: 30px; /* Ajuste la valeur selon tes besoins */
+}
+ 
+/* CSS DES PROJETS */
+
+.new-hero {
+  background: url('img/new-project-bg.jpg') center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.new-hero .hero-content {
+  display: flex;
+  flex-direction: column;  /* Aligne les éléments en colonne */
+  justify-content: center;
+  align-items: center;     /* Centre les enfants horizontalement */
+}
+
+.new-hero .hero-content h1 {
+  font-size: 60px;
+  font-family: 'raleway';
+  font-weight: 300;
+  text-transform: uppercase;
+  color: #4b7e5f;
+  margin: 0;     
+}
+
+.new-hero .hero-content p {
+  font-size: 20px;
+  margin-top: 15px;
+  left: 50%;
+  color: #043617;
+  max-width: 800px;
+}
+
+.slider-container {
+  position: relative;
+  width: 80%; /* Réduit la largeur du carrousel */
+  margin: 0 auto; /* Centre le carrousel */
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(75, 126, 95, 0.7);
+  color: white;
+  border: none;
+  font-size: 30px;
+  padding: 15px;
+  border-radius: 50px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.arrow.left {
+  left: -30px;
+}
+
+.arrow.right {
+  right: -30px;
+}
+
+.arrow:hover {
+  background-color: rgba(4, 54, 23, 0.7);
+}
+
+.slider {
+  display: flex;
+  overflow-x: hidden;
+  scroll-snap-type: x mandatory;
+  width: 100%;               /* Ajuste automatiquement à l'écran */
+  margin: 0 auto;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  transition: transform 0.5s ease-in-out;          
+
+}
+
+.slider::-webkit-scrollbar {
+  display: none;             /* Masque la barre de défilement (Chrome, Safari) */
+}
+
+.slide {
+  flex: 0 0 600px;       
+  max-width: 600px;
+  height: 400px;               /* Hauteur fixe pour les images portrait */
+  scroll-snap-align: start;
+  border-radius: 5px;
+  overflow: hidden;
+  align-items: center;         /* Centre verticalement l'image */
+  justify-content: center;     /* Centre horizontalement l'image */
+  margin: 0px;                 /* Supprime les marges entre les slides */
+
+}
+
+.slide img {
+  width: 100%;              /* Ajuste la largeur automatiquement */
+  height: 100%;
+  display: block;            /* Évite l'espace en ligne sous les images */
+  object-fit: cover;
+  max-height: 400px;        /* Définit une hauteur maximale */
+  object-fit: contain;      /* S'assure que l'image entière est visible sans être rognée */
+  margin: 0px;
+}
+
+/* Style de la fenêtre modale */
+.modal {
+  display: none;                    /* Cachée par défaut */
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;                    /* Au-dessus du reste du contenu */
+  padding-top: 80px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;                   /* Défilement si nécessaire */
+  background-color:  rgba(44, 68, 54, 0.6);
+  backdrop-filter: grayscale(100%);      /* Filtre noir et blanc */
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;                   /* Largeur maximale */
+  max-height: 80vh;                 /* Hauteur maximale */
+  display: block;
+  position: relative;  /* Pour un positionnement central */
+  z-index: 1001;       /* Au-dessus de l'arrière-plan */
+  border-radius: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: white;
+  font-size: 40px;
+  font-weight: 300;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+/* Effet au survol de la croix */
+.close:hover {
+  color: #043617;  
+}
+
+/* Styles pour les écrans de moins de 768px (tablettes et mobiles) */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column; /* Navigation verticale */
+    align-items: center;
+  }
+
+  .header .navigation ul {
+    flex-direction: column; /* Liste verticale */
+    text-align: center;
+  }
+
+  .header .navigation ul li {
+    margin: 10px 0; /* Espacement vertical entre les liens */
+  }
+
+  .hero-content h1 {
+    font-size: 36px; /* Taille réduite du titre */
+  }
+
+  .grid1 {
+    grid-template-columns: 1fr; /* Une seule colonne */
+    gap: 20px; /* Moins d'espacement */
+    top: 0; /* Réinitialiser le positionnement */
+  }
+
+  .a, .b, .c, .d, .e, .f {
+    width: 90%; /* Occuper presque toute la largeur */
+    height: auto; /* Ajuster en fonction du contenu */
+    margin: 0 auto; /* Centrer les blocs */
+  }
+
+  .projects {
+    flex-direction: column; /* Alignement vertical */
+    gap: 20px; /* Espacement entre les projets */
+  }
+
+  .scroll-down {
+    position: static; /* Réinitialiser la position fixe */
+    margin-top: 20px; /* Ajouter un espacement */
+    transform: none; /* Enlever le centrage horizontal */
+  }
+}
+
+/* Styles pour les écrans de moins de 480px (mobiles très petits) */
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 28px; /* Taille encore plus réduite */
+  }
+
+  .header .logo img {
+    height: 40px; /* Logo plus petit */
+  }
+
+  .project-title {
+    font-size: 24px; /* Taille réduite des titres de projet */
+  }
+
+  .project-year {
+    font-size: 16px;
+  }
+}
+
