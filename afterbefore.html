@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Collection - Eugénie Fernet</title>
+  <link rel="icon" type="image/png" href="favi.png">
+  <meta name="description" content="Portfolio de Eugénie Fernet, projet coffret graphique.">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="header">
+    <div class="logo">
+      <a href="index.html">
+        <img src="logofinal.png" alt="Eugénie Fernet">
+      </a>
+    </div>
+    <div class="navigation">
+      <ul>
+        <li><a href="https://www.instagram.com/eugenie_indd/">Design Graphique</a></li>
+        <li><a href="https://www.instagram.com/eugenie_psd/">Photographie</a></li>
+        <li><a href="a-propos.html">À propos</a></li>
+        <li><a href="https://www.instagram.com/direct/t/17845197044937592">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="new-hero">
+    <div class="hero-content">
+      <h1>AFTER-BEFORE</h1>
+      <p> J’ai fait cette édition sur la maison de mes grands-parents, à la campagne, que je connais depuis toujours. Certaines choses ont changé, d’autres demeurent encore aujourd’hui. Je veux la montrer telle qu’elle est, et telle que je l’ai toujours connue : encombrée, vieillote, mais chaleureuse et familiale.
+        Soyez les bienvenus à Eval.</p>
+    </div>
+  </section>
+
+  <div class="slider-container">
+  <div class="slider">
+    <div class="slide"><img src="img/EDITIONS/_MG_9254.jpg" alt=""></div>
+    <div class="slide"><img src="img/EDITIONS/_MG_9304.jpg" alt=""></div>
+    <div class="slide"><img src="img/EDITIONS/_MG_9238.jpg" alt=""></div>
+    <div class="slide"><img src="img/EDITIONS/_MG_9295.jpg" alt=""></div>
+    <div class="slide"><img src="img/EDITIONS/_MG_9241.jpg" alt=""></div>
+    <div class="slide"><img src="img/EDITIONS/_MG_9308.jpg" alt=""></div>
+    <div class="slide"><img src="img/EDITIONS/_MG_9273.jpg" alt=""></div>
+    <div class="slide"><img src="img/EDITIONS/_MG_2162.jpg" alt=""></div>
+    <div class="slide"><img src="img/EDITIONS/_MG_2163.jpg" alt=""></div>
+    <div class="slide"><img src="img/EDITIONS/_MG_2172.jpg" alt=""></div>
+  </div>
+</div>
+
+<button id="prevBtn">←</button>
+<button id="nextBtn">→</button>
+
+  <!-- Structure de la fenêtre modale -->
+  <div class="modal" id="imageModal">
+    <span class="close" id="closeModal">&times;</span>
+    <img class="modal-content" id="modalImg">
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Eugénie Fernet - Tous droits réservés</p>
+  </footer>
+
+  <!-- JavaScript placé à la fin du body -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+  // === Gestion de la modale d'images ===
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImg');
+  const closeModal = document.getElementById('closeModal');
+  const images = document.querySelectorAll('.slider img');
+
+  // Ouvre la modale lorsqu'une image est cliquée
+  images.forEach(img => {
+    img.onclick = function() {
+      modal.style.display = "block";
+      modalImg.src = this.src;
+    };
+  });
+
+  // Ferme la modale en cliquant sur le bouton de fermeture
+  closeModal.onclick = function() {
+    modal.style.display = "none";
+  };
+
+  // Ferme la modale en cliquant à l'extérieur de l'image
+  window.onclick = function(event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  };
+
+  // === Slider navigation ===
+  const slider = document.querySelector('.slider');
+prevBtn.addEventListener('click', () => {
+    slider.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+});
+nextBtn.addEventListener('click', () => {
+    slider.scrollBy({ left: slideWidth, behavior: 'smooth' });
+});
+
+  // Largeur d'une slide (utile pour défiler slide par slide)
+  const slideWidth = document.querySelector('.slide').offsetWidth;
+
+  // Navigation via les boutons
+  prevBtn.addEventListener('click', () => {
+    sliderContainer.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+  });
+
+  nextBtn.addEventListener('click', () => {
+    sliderContainer.scrollBy({ left: slideWidth, behavior: 'smooth' });
+  });
+
+  // Navigation via les touches clavier
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') {
+      sliderContainer.scrollBy({ left: slideWidth, behavior: 'smooth' });
+    } else if (e.key === 'ArrowLeft') {
+      sliderContainer.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+    }
+  });
+
+  // Défilement manuel avec la souris (drag-to-scroll)
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  sliderContainer.addEventListener('mousedown', (e) => {
+    isDown = true;
+    sliderContainer.classList.add('active'); // Ajoute une classe pour des styles visuels, si nécessaire
+    startX = e.pageX - sliderContainer.offsetLeft;
+    scrollLeft = sliderContainer.scrollLeft;
+  });
+
+  sliderContainer.addEventListener('mouseleave', () => {
+    isDown = false;
+    sliderContainer.classList.remove('active');
+  });
+
+  sliderContainer.addEventListener('mouseup', () => {
+    isDown = false;
+    sliderContainer.classList.remove('active');
+  });
+
+  sliderContainer.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - sliderContainer.offsetLeft;
+    const walk = (x - startX) * 2; // Multiplier pour ajuster la vitesse
+    sliderContainer.scrollLeft = scrollLeft - walk;
+  });
+});
+  </script>
+
+</body>
+</html>
