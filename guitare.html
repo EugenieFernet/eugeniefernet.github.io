@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>France Gall</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="inner-page">
+
+    <div class="logo">
+        <a href="index.html">
+            <img src="img/illus/eugpdg.jpg" alt="Eugénie Fernet">
+        </a>
+    </div>
+        <!-- Icônes en haut à droite -->
+        <div class="icon-links">
+            <ul>
+                <li><a href="https://www.instagram.com/eugenie_psd/">
+                    <img src="img/illus/insta.jpg" alt="Photographie">
+                </a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="project-container">
+        <!-- Bloc texte + galerie -->
+        <div class="project-content">
+            <div class="project-text">
+                <h1>FRANCE GALL</h1>
+                <p>Conception et réalisation d'une guitare sur la chanteuse France Gall, ainsi qu'un photomontage et une pochette de vinyle. Pour ce projet, j'ai visionné beaucoup de concerts et de clips, et j'ai remarqué qu'une importance particulière était accordée aux instruments, notamment au piano, au saxophone, et à la guitare. Pour plus d'originalité, les touches de piano sont en volume, et permettent de produire des sons. </p>
+            </div>
+            <div class="project-gallery">
+                <video controls>
+                    <source src="img/GUITARE/resiste.mp4" type="video/mp4">
+                </video>
+                <img src="img/GUITARE/FRANCEGALL3.jpg" alt="Image du projet">
+                <img src="img/GUITARE/guientier.jpg" alt="Image du projet"class="portrait"> <!-- Image verticale -->
+                <img src="img/GUITARE/bahaha copie2.jpg" alt="Image du projet">
+                <img src="img/GUITARE/france gall3.jpg" alt="Image du projet">
+                <img src="img/GUITARE/france gall4.jpg" alt="Image du projet">
+            </div>
+        </div>
+
+        <!-- Modale d'affichage des images -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <div class="custom-video-controls">
+        <button id="playPauseBtn">▶</button>
+        <input type="range" id="progressBar" value="0" min="0" max="100">
+        <button id="muteBtn">🔊</button>
+    </div>
+    
+        <!-- Illustration à droite -->
+        <div class="project-illustration">
+            <img src="img/illus/guitare.jpg" alt="Illustration du projet">
+        </div>
+    </main>
+
+    <script>
+        // Récupération des éléments de la modale
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("modalImg");
+        var closeBtn = document.querySelector(".close");
+    
+        // Sélectionne toutes les images de la galerie et ajoute un événement de clic
+        document.querySelectorAll(".project-gallery img").forEach(img => {
+            img.addEventListener("click", function() {
+                modal.style.display = "flex";
+                modalImg.src = this.src; // Charge l'image cliquée dans la modale
+            });
+        });
+    
+        // Fermer la modale quand on clique sur (x)
+        closeBtn.addEventListener("click", function() {
+            modal.style.display = "none";
+        });
+    
+        // Fermer la modale en cliquant à l'extérieur de l'image
+        modal.addEventListener("click", function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+
+    
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Eugénie FERNET - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    
+</body>
+</html>
