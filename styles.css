@@ -137,7 +137,7 @@ body {
 }
 
 .grid-item:hover img {
-    filter: grayscale(0%) brightness(70%); /* L'image retrouve ses couleurs mais devient plus sombre */
+    filter: grayscale(0%) brightness(80%); /* L'image retrouve ses couleurs mais devient plus sombre */
 }
 
 /* Gestion des tailles */
@@ -474,10 +474,6 @@ body {
     transition: filter 0.3s ease-in-out; /* Transition fluide */
 }
 
-.grid-gallery:hover img {
-    filter: grayscale(0%) brightness(70%); /* L'image retrouve ses couleurs mais devient plus sombre */
-}
-
 /* Gestion des tailles */
 /* Une image horizontale fait la moitié de la hauteur d'une image verticale */
 .grid-gallery.horizontal {
@@ -506,19 +502,8 @@ body {
     transition: opacity 0.3s ease-in-out;
 }
 
-/* Le texte est caché par défaut */
-.grid-gallery .overlay span {
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
 .grid-gallery:hover {
     transform: scale(1);
-}
-
-/* Au survol : on enlève l'overlay orange */
-.grid-gallery:hover .overlay {
-    background: rgba(255, 255, 255, 0.2); /* Couche transparente */
 }
 
 /* Au survol : on affiche le texte */
@@ -527,43 +512,6 @@ body {
 }
 
 /* MODALE GALERIE PHOTO */
-.photomodal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    align-items: center;
-    justify-content: center;
-}
-
-/* Image affichée dans la modale */
-.photomodal-content {
-    max-width: 90%;
-    max-height: 80%;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-}
-
-/* Bouton de fermeture spécifique */
-.close-photomodal {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.close-photomodal:hover {
-    color: red;
-}
-
 
 /* FOOTER */
 
