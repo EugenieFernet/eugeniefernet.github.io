@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vida Loca</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="inner-page">
+
+    <div class="logo">
+        <a href="index.html">
+            <img src="img/illus/eugpdg.jpg" alt="Eugénie Fernet">
+        </a>
+    </div>
+
+        <!-- Icônes en haut à droite -->
+        <div class="icon-links">
+            <ul>
+                <li><a href="https://www.instagram.com/eugenie_psd/">
+                    <img src="img/illus/insta.jpg" alt="Photographie">
+                </a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="project-container">
+        <!-- Bloc texte + galerie -->
+        <div class="project-content">
+            <div class="project-text">
+                <h1>LA VIDA LOCA</h1>
+                <p>Quand on part en Erasmus dans un pays inconnu, et qu'on a beaucoup (beaucoup xD) de mal avec l'accent local, les péripéties et anecdotes sont multiples ! À travers ces dessins, je raconte au fil des jours mon expérience, mon quotidien, et mes surprises en Irlande. Soyez les bienvenus dans mon journal de bord d'Erasmus : la Vida Loca !</p>
+            </div>
+            <div class="project-gallery">
+                <img src="img/VIDA LOCA/11janvier.JPG" alt="Image du projet">
+                <img src="img/VIDA LOCA/18_Janvier.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/19janvier.JPG" alt="Image du projet">
+                <img src="img/VIDA LOCA/21_Janvier.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/22janvier.JPG" alt="Image du projet">
+                <img src="img/VIDA LOCA/23janvier.JPG" alt="Image du projet">
+                <img src="img/VIDA LOCA/23_Janvier.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/24_Janvier_.JPG" alt="Image du projet">
+                <img src="img/VIDA LOCA/25_Janvier.JPG" alt="Image du projet">
+                <img src="img/VIDA LOCA/27_Janvier.JPG" alt="Image du projet">
+                <img src="img/VIDA LOCA/28_Janvier.JPG" alt="Image du projet">
+                <img src="img/VIDA LOCA/30janvier.JPG" alt="Image du projet">
+                <img src="img/VIDA LOCA/31janvier.JPG" alt="Image du projet">
+                <img src="img/VIDA LOCA/1er_Février_.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/2_Février_.JPG" alt="Image du projet">
+                <img src="img/VIDA LOCA/3 février.JPG" alt="Image du projet">
+                <img src="img/VIDA LOCA/6_Février_.JPG" alt="Image du projet">
+                <img src="img/VIDA LOCA/7_Février_.JPG" alt="Image du projet">
+                <img src="img/VIDA LOCA/8_Février_.JPG" alt="Image du projet">
+                <img src="img/VIDA LOCA/12_Février.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/13_Février.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/15_Février.JPG" alt="Image du projet">
+                <img src="img/VIDA LOCA/17_Février.JPG" alt="Image du projet">
+                <img src="img/VIDA LOCA/18_Février.JPG" alt="Image du projet">
+                <img src="img/VIDA LOCA/19_Février.JPG" alt="Image du projet">
+                <img src="img/VIDA LOCA/21_Février.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/22_Février.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/24_Février.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/25_Février.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/28_Février.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/2_Mars.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/3_Mars.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/6_Mars.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/7_Mars.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/8_Mars.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/11_Mars.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/12_Mars.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/13_Mars.jpeg" alt="Image du projet">
+                <img src="img/VIDA LOCA/14_Mars.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/17_Mars.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/18_Mars.jpeg" alt="Image du projet">
+                <img src="img/VIDA LOCA/20_Mars.jpeg" alt="Image du projet">
+                <img src="img/VIDA LOCA/21_Mars.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/22_Mars.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/23_Mars.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/28_Mars.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/29_Mars.jpg" alt="Image du projet">
+                <img src="img/VIDA LOCA/1er_Avril.jpg" alt="Image du projet">
+            </div>
+        </div>
+
+        <!-- Modale d'affichage des images -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    
+        <!-- Illustration à droite -->
+        <div class="project-illustration">
+            <img src="img/illus/Vida Loca.jpg" alt="Illustration du projet">
+        </div>
+    </main>
+
+    <script>
+        // Récupération des éléments de la modale
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("modalImg");
+        var closeBtn = document.querySelector(".close");
+    
+        // Sélectionne toutes les images de la galerie et ajoute un événement de clic
+        document.querySelectorAll(".project-gallery img").forEach(img => {
+            img.addEventListener("click", function() {
+                modal.style.display = "flex";
+                modalImg.src = this.src; // Charge l'image cliquée dans la modale
+            });
+        });
+    
+        // Fermer la modale quand on clique sur (x)
+        closeBtn.addEventListener("click", function() {
+            modal.style.display = "none";
+        });
+    
+        // Fermer la modale en cliquant à l'extérieur de l'image
+        modal.addEventListener("click", function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+    
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Eugénie FERNET - Tous droits réservés</p>
+        </div>
+    </footer>
+
+</body>
+</html>
