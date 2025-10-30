@@ -40,6 +40,16 @@ body {
     padding-bottom: 0px;
 }
 
+/* Animation fluide du logo */
+.logo img {
+    transition: transform 0.3s ease-in-out; /* transition fluide */
+}
+
+/* Effet au survol */
+.logo img:hover {
+    transform: scale(1.1); /* agrandit le logo de 10 % */
+}
+
 
 /* Icônes en haut à droite */
 .icon-links {
@@ -93,8 +103,8 @@ body {
 }
 
 .navigation a:hover {
-    color: #ff6f20;
-}
+    color: #ff6f20; 
+} 
 
 /* Pour ajuster la mise en page sur mobile */
 @media (max-width: 768px) {
@@ -132,7 +142,7 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: grayscale(0%); /* Noir et blanc */
+    filter: grayscale(100%); /* Noir et blanc */
     transition: filter 0.3s ease-in-out; /* Transition fluide */
 }
 
@@ -159,7 +169,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 111, 32, 0.2); /* Couche orange */
+   /* background: rgba(255, 111, 32, 0.3); Couche orange */
     color: white;
     display: flex;
     justify-content: center;
@@ -226,7 +236,8 @@ body {
 .about-text h1 {
     font-family: 'Raleway', sans-serif;
     font-size: 2.5em;
-    color: #004080;
+    /*color: #004080; */
+    color:  #ff6f20;
     margin-bottom: 20px;
 }
 
@@ -308,7 +319,7 @@ body {
 
 .project-text h1 {
     font-size: 2em;
-    color: #004080;
+    color:  #ff6f20;
 }
 
 /* Grille d’images pour le projet */
@@ -517,7 +528,7 @@ body {
 
 .site-footer {
     background-color: none; 
-    color: #004080;
+    color: #ff6f20;
     text-align: center;
     padding: 20px 0;
     padding-bottom: 10px;
