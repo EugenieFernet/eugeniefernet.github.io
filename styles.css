@@ -273,7 +273,7 @@ body {
     margin-right: 0px;
     margin-left: 130px;
     padding: 0;
-    display: flex;
+    display: block;
     align-items: flex-start;
     justify-content: space-between;
     gap: 30px;
@@ -281,11 +281,18 @@ body {
 
 /* Section de texte et galerie (2/3 de la largeur) */
 .project-content {
-    width: 65%; /* 2/3 de la largeur */
+    width: 100%; /* toute la largeur */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin-right: 40px; /* Ajoute un espace pour éviter que le contenu ne passe sous l'illustration */
+}
+
+.project-content2 {
+    width: 10%; /* toute la largeur */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 /* Illustration placée à droite */
@@ -309,10 +316,10 @@ body {
 
 /* Texte du projet */
 .project-text {
-    width: 100%;
+    max-width: 50vw; /* ≈ 2/3 de l’écran */
     font-size: 1.2em;
     line-height: 1.6;
-    text-align:left;
+    text-align:justify;
     color: #333;
     padding: 0px;
 }
@@ -325,7 +332,7 @@ body {
 /* Grille d’images pour le projet */
 .project-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Colonnes flexibles */
+    grid-template-columns: repeat(2, 1fr); /* 🔥 2 colonnes fixes */
     grid-auto-rows: auto; /* Permet aux lignes de s’adapter au contenu */
     gap: 10px; /* Espacement entre les éléments */
     justify-content: center; /* Centre les éléments */
