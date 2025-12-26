@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GUINNESS'POSTER</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
+
 <body class="inner-page">
 
-    <div class="logo">
-        <a href="index.html">
-            <img src="img/illus/eug.png" alt="Eugénie Fernet">
-        </a>
-    </div>
+    <header>
+        <a href="../index.html" class="back-arrow">←</a>
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../img/illus/eug.png" alt="Eugénie Fernet">
+            </a>
+        </div>
 
         <!-- Icônes en haut à droite -->
         <div class="icon-links">
             <ul>
                 <li><a href="https://www.instagram.com/eugenie_graphisme/">
-                    <img src="img/illus/insta.jpg" alt="graphisme">
-                </a></li>
+                        <img src="../img/illus/insta.jpg" alt="graphisme">
+                    </a></li>
             </ul>
         </div>
     </header>
@@ -29,27 +33,31 @@
         <div class="project-content">
             <div class="project-text">
                 <h1>GUINNESS' POSTER</h1>
-                <p>Durant mon séjour en Irlande, j'ai croisé un nombre incalculable de fois des posters et des plaques qui vantaient la célèbre bière irlandaise. J'ai décidé de prendre en photo chacune de ces publicités, dans le but d'en faire par la suite un objet graphique qui les répertorie. Poster 40x60cm, impression sur papier chromé pour rappeler l'esthétique du fût et de la cannette de bière. Ceci n'est qu'un faible échantillon de toutes les affiches croisées.</p>
+                <p>Durant mon séjour en Irlande, j'ai croisé un nombre incalculable de fois des posters et des plaques
+                    qui vantaient la célèbre bière irlandaise. J'ai décidé de prendre en photo chacune de ces
+                    publicités, dans le but d'en faire par la suite un objet graphique qui les répertorie. Poster
+                    40x60cm, impression sur papier chromé pour rappeler l'esthétique du fût et de la cannette de bière.
+                    Ceci n'est qu'un faible échantillon de toutes les affiches croisées.</p>
             </div>
             <div class="project-gallery">
-                <img src="img/POSTERGUINNESS/17.jpeg" alt="Image du projet">
-                <img src="img/POSTERGUINNESS/43.jpeg" alt="Image du projet">
-                <img src="img/POSTERGUINNESS/26.jpeg" alt="Image du projet">
-                <img src="img/POSTERGUINNESS/34.jpeg" alt="Image du projet">
-                <img src="img/POSTERGUINNESS/29.jpeg" alt="Image du projet">
-                <img src="img/POSTERGUINNESS/18.jpeg" alt="Image du projet">
-                
-            
+                <img src="../img/POSTERGUINNESS/17.jpeg" alt="Image du projet">
+                <img src="../img/POSTERGUINNESS/43.jpeg" alt="Image du projet">
+                <img src="../img/POSTERGUINNESS/26.jpeg" alt="Image du projet">
+                <img src="../img/POSTERGUINNESS/34.jpeg" alt="Image du projet">
+                <img src="../img/POSTERGUINNESS/29.jpeg" alt="Image du projet">
+                <img src="../img/POSTERGUINNESS/18.jpeg" alt="Image du projet">
+
+
 
             </div>
         </div>
 
         <!-- Modale d'affichage des images -->
-    <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modalImg">
-    </div>
-    
+        <div id="imageModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="modalImg">
+        </div>
+
     </main>
 
     <script>
@@ -57,35 +65,36 @@
         var modal = document.getElementById("imageModal");
         var modalImg = document.getElementById("modalImg");
         var closeBtn = document.querySelector(".close");
-    
+
         // Sélectionne toutes les images de la galerie et ajoute un événement de clic
         document.querySelectorAll(".project-gallery img").forEach(img => {
-            img.addEventListener("click", function() {
+            img.addEventListener("click", function () {
                 modal.style.display = "flex";
                 modalImg.src = this.src; // Charge l'image cliquée dans la modale
             });
         });
-    
+
         // Fermer la modale quand on clique sur (x)
-        closeBtn.addEventListener("click", function() {
+        closeBtn.addEventListener("click", function () {
             modal.style.display = "none";
         });
-    
+
         // Fermer la modale en cliquant à l'extérieur de l'image
-        modal.addEventListener("click", function(event) {
+        modal.addEventListener("click", function (event) {
             if (event.target === modal) {
                 modal.style.display = "none";
             }
         });
     </script>
 
-    
+
     <footer class="site-footer">
         <div class="footer-content">
             <p>&copy; 2025 Eugénie FERNET - Tous droits réservés</p>
         </div>
     </footer>
 
-    
+
 </body>
+
 </html>
