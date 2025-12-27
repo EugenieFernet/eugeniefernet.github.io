@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arnauds</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body class="inner-page">
+
+    <header>
+        <a href="../index.html" class="back-arrow">←</a>
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../img/illus/eug.png" alt="Eugénie Fernet">
+            </a>
+        </div>
+
+        <!-- Icônes en haut à droite -->
+        <div class="icon-links">
+            <ul>
+                <li><a href="https://www.instagram.com/eugenie_graphisme/">
+                        <img src="../img/illus/insta.jpg" alt="graphisme">
+                    </a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="project-container">
+        <!-- Bloc texte + galerie -->
+        <div class="project-content">
+            <div class="project-text">
+                <h1>ARNAUDS</h1>
+                <p>Pour ce projet de photographie, je me suis intéressée aux techniciens d'école d'art, qui travaillent
+                    souvent dans l'ombre mais sans qui tout fonctionnerait moins bien. J'ai suivi le quotidien des
+                    "Arnauds", techniciens à l'ESAD d'Amiens, pendant leurs journées de travail. Projet réalisé sur
+                    plusieurs mois. Format de l'édition : 13x13cm, 72 pages, 68 photos. </p>
+            </div>
+            <div class="project-gallery">
+                <img src="../img/arnauds/couv.jpeg" alt="Image du projet">
+                <img src="../img/arnauds/int.jpeg" alt="Image du projet">
+                <img src="../img/arnauds/int1.jpeg" alt="Image du projet">
+                <img src="../img/arnauds/int3.jpeg" alt="Image du projet">
+                <img src="../img/arnauds/int5.jpeg" alt="Image du projet">
+                <img src="../img/arnauds/int6.jpeg" alt="Image du projet">
+                <img src="../img/arnauds/int8.jpeg" alt="Image du projet">
+                <img src="../img/arnauds/int7.jpeg" alt="Image du projet">
+                <img src="../img/arnauds/int4.jpeg" alt="Image du projet">
+                <img src="../img/arnauds/crédits.jpeg" alt="Image du projet">
+                <img src="../img/arnauds/couvint.jpeg" alt="Image du projet">
+                <img src="../img/arnauds/couv2.jpeg" alt="Image du projet">
+
+            </div>
+        </div>
+
+        <!-- Modale d'affichage des images -->
+        <div id="imageModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="modalImg">
+        </div>
+
+    </main>
+
+    <script>
+        // Récupération des éléments de la modale
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("modalImg");
+        var closeBtn = document.querySelector(".close");
+
+        // Sélectionne toutes les images de la galerie et ajoute un événement de clic
+        document.querySelectorAll(".project-gallery img").forEach(img => {
+            img.addEventListener("click", function () {
+                modal.style.display = "flex";
+                modalImg.src = this.src; // Charge l'image cliquée dans la modale
+            });
+        });
+
+        // Fermer la modale quand on clique sur (x)
+        closeBtn.addEventListener("click", function () {
+            modal.style.display = "none";
+        });
+
+        // Fermer la modale en cliquant à l'extérieur de l'image
+        modal.addEventListener("click", function (event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Eugénie FERNET - Tous droits réservés</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

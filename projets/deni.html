@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A GUINNESS A DAY</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>DÉNI</title>
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
+
 <body class="inner-page">
 
-    <div class="logo">
-        <a href="index.html">
-            <img src="img/illus/eug.png" alt="Eugénie Fernet">
-        </a>
-    </div>
+    <header>
+        <a href="../index.html" class="back-arrow">←</a>
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../img/illus/eug.png" alt="Eugénie Fernet">
+            </a>
+        </div>
 
         <!-- Icônes en haut à droite -->
         <div class="icon-links">
             <ul>
                 <li><a href="https://www.instagram.com/eugenie_graphisme/">
-                    <img src="img/illus/insta.jpg" alt="graphisme">
-                </a></li>
+                        <img src="../img/illus/insta.jpg" alt="graphisme">
+                    </a></li>
             </ul>
         </div>
     </header>
@@ -28,23 +32,32 @@
         <!-- Bloc texte + galerie -->
         <div class="project-content">
             <div class="project-text">
-                <h1>A GUINNESS A DAY</h1>
-                <p>Imprégnée de la culture du pub et de la célèbre campagne de pub Guinness des années 30, je me suis questionnée sur ce que je ferais, moi, si l'on me demandais de faire des affiches pour Guinness. J'ai voulu conserver le côté décalé et illustratif, en réalisant des dessins simples et compréhensifs. J'ai ensuite décliné ces affiches en cartes et en stickers. </p>
+                <h1>DÉNI TYPEFACE</h1>
+                <p>Création et mise en page du spécimen d'une typographie modulaire imaginée à partir d'une grille 60
+                    degrés. Projet réalisé lors de ma mobilité Erasmus à Limerick School of Art and Design.</p>
             </div>
             <div class="project-gallery">
-                <img src="img/guinness dessins/mes1.png" alt="Image du projet"class="portrait"> <!-- Image verticale -->
-                <img src="img/guinness dessins/mes2.png" alt="Image du projet"class="portrait"> <!-- Image verticale -->
-                <img src="img/guinness dessins/mes3.png" alt="Image du projet">
-                <img src="img/guinness dessins/mes5.jpeg" alt="Image du projet">
-            
+                <img src="../img/DENI/post DÉNI2.jpg" alt="Image du projet">
+                <img src="../img/DENI/2.jpeg" alt="Image du projet">
+                <img src="../img/DENI/3.jpeg" alt="Image du projet">
+                <img src="../img/DENI/post DÉNI10.jpg" alt="Image du projet">
+                <img src="../img/DENI/5.jpeg" alt="Image du projet">
+                <img src="../img/DENI/1.jpeg" alt="Image du projet">
+                <img src="../img/DENI/7.jpeg" alt="Image du projet">
+                <img src="../img/DENI/9.jpeg" alt="Image du projet">
+                <img src="../img/DENI/typominuscules.png" alt="Image du projet">
+
+
+
             </div>
         </div>
 
         <!-- Modale d'affichage des images -->
-    <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modalImg">
-    </div>
+        <div id="imageModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="modalImg">
+        </div>
+
 
     </main>
 
@@ -53,33 +66,36 @@
         var modal = document.getElementById("imageModal");
         var modalImg = document.getElementById("modalImg");
         var closeBtn = document.querySelector(".close");
-    
+
         // Sélectionne toutes les images de la galerie et ajoute un événement de clic
         document.querySelectorAll(".project-gallery img").forEach(img => {
-            img.addEventListener("click", function() {
+            img.addEventListener("click", function () {
                 modal.style.display = "flex";
                 modalImg.src = this.src; // Charge l'image cliquée dans la modale
             });
         });
-    
+
         // Fermer la modale quand on clique sur (x)
-        closeBtn.addEventListener("click", function() {
+        closeBtn.addEventListener("click", function () {
             modal.style.display = "none";
         });
-    
+
         // Fermer la modale en cliquant à l'extérieur de l'image
-        modal.addEventListener("click", function(event) {
+        modal.addEventListener("click", function (event) {
             if (event.target === modal) {
                 modal.style.display = "none";
             }
         });
     </script>
-    
+
+
     <footer class="site-footer">
         <div class="footer-content">
             <p>&copy; 2025 Eugénie FERNET - Tous droits réservés</p>
         </div>
     </footer>
 
+
 </body>
+
 </html>

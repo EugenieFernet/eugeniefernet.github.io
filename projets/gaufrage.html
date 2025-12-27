@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAUFRAGE PARTY</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body class="inner-page">
+
+    <header>
+        <a href="../index.html" class="back-arrow">←</a>
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../img/illus/eug.png" alt="Eugénie Fernet">
+            </a>
+        </div>
+
+        <!-- Icônes en haut à droite -->
+        <div class="icon-links">
+            <ul>
+                <li><a href="https://www.instagram.com/eugenie_graphisme/">
+                        <img src="../img/illus/insta.jpg" alt="graphisme">
+                    </a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="project-container">
+        <!-- Bloc texte + galerie -->
+        <div class="project-content">
+            <div class="project-text">
+                <h1>GAUFRAGE PARTY</h1>
+                <p>À l'occasion des journées "Esad et Waide" 2025, où des workshops sont organisés par et pour les
+                    étudiants, j'ai mené un atelier d'initiation au gaufrage (embossage) fait maison, à partir d'une
+                    technique que j'ai imaginée. L'objectif de ce workshop était de faire découvrir aux participants
+                    cette technique, afin de créér une affiche collaborative, la toute première affiche faite uniquement
+                    en gaufrage, sans impression. Nous avons choisi de répartir la surface en différentes zones, afin
+                    que chaque participant puisse explorer et expérimenter librement sur sa zone attribuée.
+                    Workshop mené avec Eve Mousain. Durée : 1 journée, nombre de participants : 14</p>
+            </div>
+            <div class="project-gallery">
+                <img src="../img/workshop/affiche.jpeg" alt="Image du projet" class="portrait"> <!-- Image verticale -->
+                <img src="../img/workshop/ordi1.jpeg" alt="Image du projet">
+                <img src="../img/workshop/ordi2.jpeg" alt="Image du projet">
+                <img src="../img/workshop/echenillage.jpeg" alt="Image du projet">
+                <img src="../img/workshop/gauf.jpeg" alt="Image du projet">
+                <img src="../img/workshop/gauf2.jpeg" alt="Image du projet">
+                <img src="../img/workshop/dessin.jpeg" alt="Image du projet">
+                <img src="../img/workshop/repartition.jpeg" alt="Image du projet" class="portrait">
+                <!-- Image verticale -->
+                <img src="../img/workshop/vinyle.jpeg" alt="Image du projet">
+                <img src="../img/workshop/gauf3.jpeg" alt="Image du projet">
+
+
+            </div>
+        </div>
+
+        <!-- Modale d'affichage des images -->
+        <div id="imageModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="modalImg">
+        </div>
+
+    </main>
+
+    <script>
+        // Récupération des éléments de la modale
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("modalImg");
+        var closeBtn = document.querySelector(".close");
+
+        // Sélectionne toutes les images de la galerie et ajoute un événement de clic
+        document.querySelectorAll(".project-gallery img").forEach(img => {
+            img.addEventListener("click", function () {
+                modal.style.display = "flex";
+                modalImg.src = this.src; // Charge l'image cliquée dans la modale
+            });
+        });
+
+        // Fermer la modale quand on clique sur (x)
+        closeBtn.addEventListener("click", function () {
+            modal.style.display = "none";
+        });
+
+        // Fermer la modale en cliquant à l'extérieur de l'image
+        modal.addEventListener("click", function (event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Eugénie FERNET - Tous droits réservés</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,786 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+
+.logo {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
+    padding: 30px 0;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.homepage .logo img {
+    height: 200px;
+    transition: height 0.3s ease-in-out;
+}
+
+.inner-page .logo img {
+    height: 80px;
+    padding-bottom: 0px;
+}
+
+.logo img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo img:hover {
+    transform: scale(1.1);
+}
+
+.icon-links {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+.back-arrow {
+    position: fixed;
+    top: 15px;
+    left: 20px;
+    z-index: 9999;
+    font-size: 2em;
+    text-decoration: none;
+    color: #333;
+    opacity: 1 !important;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.back-arrow:hover {
+    transform: translateX(-5px);
+    color: #ff6f20;
+}
+
+.icon-links ul {
+    list-style: none;
+    margin: 30px;
+    padding: 0;
+    display: flex;
+    gap: 35px;
+}
+
+.icon-links a img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.icon-links a img:hover {
+    transform: scale(1.1);
+}
+
+
+@media (max-width: 768px) {
+
+    .homepage .logo img {
+        height: 120px;
+    }
+
+    .inner-page .logo img {
+        height: 60px;
+    }
+
+    .logo {
+        padding: 15px 0;
+        width: 100%;
+    }
+
+    .icon-links {
+        top: 5px;
+        right: 5px;
+    }
+
+    .icon-links ul {
+        margin: 10px;
+        gap: 15px;
+    }
+
+    .icon-links a img {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 50px;
+    padding-top: 0px;
+    max-width: 70vw;
+    margin: auto;
+}
+
+@media (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 90vw;
+        padding: 30px;
+        padding-top: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+        width: 100%;
+        padding: 10px;
+        padding-top: 0;
+        gap: 12px;
+    }
+
+    .grid-item {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .grid-item.horizontal,
+    .grid-item.vertical {
+        grid-row: span 1;
+        height: auto;
+        min-height: 200px;
+        aspect-ratio: 16 / 10;
+    }
+
+    .grid-item img {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+    }
+
+    .grid-item .overlay {
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    .grid-item .overlay span {
+        opacity: 1;
+        font-size: 1em;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    }
+}
+
+/* Keyframe animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes logoWiggle {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    15% {
+        transform: rotate(-3deg);
+    }
+
+    30% {
+        transform: rotate(3deg);
+    }
+
+    45% {
+        transform: rotate(-2deg);
+    }
+
+    60% {
+        transform: rotate(2deg);
+    }
+
+    75% {
+        transform: rotate(-1deg);
+    }
+
+    90% {
+        transform: rotate(1deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.logo-wiggle {
+    animation: logoWiggle 0.8s ease-in-out;
+}
+
+/* Scroll reveal - elements start hidden */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.scroll-reveal.revealed {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Staggered animation delays */
+.scroll-reveal:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.scroll-reveal:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.scroll-reveal:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.scroll-reveal:nth-child(4) {
+    animation-delay: 0.15s;
+}
+
+.scroll-reveal:nth-child(5) {
+    animation-delay: 0.25s;
+}
+
+.scroll-reveal:nth-child(6) {
+    animation-delay: 0.1s;
+}
+
+.grid-item {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        box-shadow 0.4s ease;
+}
+
+.grid-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease-in-out;
+}
+
+.grid-item:hover img {
+    filter: grayscale(0%) brightness(80%);
+    /* L'image retrouve ses couleurs mais devient plus sombre */
+}
+
+/* Gestion des tailles */
+/* Une image horizontale fait la moitié de la hauteur d'une image verticale */
+.grid-item.horizontal {
+    grid-row: span 1;
+    /* Prend 1 rangée */
+    height: 200px;
+    /* Hauteur fixe */
+}
+
+.grid-item.vertical {
+    grid-row: span 2;
+    /* Prend 2 rangées (donc 2x plus grand qu'une horizontale) */
+    height: 415px;
+}
+
+/* Overlay au survol */
+.grid-item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: rgba(255, 111, 32, 0.3); Couche orange */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    opacity: 1;
+    /* Visible par défaut */
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Le texte est caché par défaut */
+.grid-item .overlay span {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.grid-item:hover {
+    transform: scale(1);
+}
+
+/* Au survol : on enlève l'overlay orange */
+.grid-item:hover .overlay {
+    background: rgba(255, 111, 32, 0);
+    /* Couche transparente */
+}
+
+/* Au survol : on affiche le texte */
+.grid-item:hover .overlay span {
+    opacity: 1;
+}
+
+/* Touch-hover effect for mobile (simulates hover on scroll) */
+.grid-item.touch-hover img {
+    filter: grayscale(0%) brightness(80%);
+}
+
+.grid-item.touch-hover .overlay {
+    background: rgba(255, 111, 32, 0);
+}
+
+.grid-item.touch-hover .overlay span {
+    opacity: 1;
+}
+
+/* PAGE À PROPOS */
+
+.about-container {
+    display: flex;
+    height: 100vh;
+    /* Hauteur complète de l'écran */
+    width: 100vw;
+    /* Largeur complète de l'écran */
+}
+
+/* Partie image */
+.about-image {
+    width: 60%;
+    /* 60% de la largeur */
+    height: 100%;
+    overflow: hidden;
+    /* Empêche les débordements */
+    margin: 0px;
+}
+
+.about-image img {
+    width: 85%;
+    height: 100%;
+    object-fit: contain;
+    /* L’image s’adapte sans être coupée */
+    display: block;
+    margin: auto;
+    /* Centre l'image si elle est plus petite que le conteneur */
+}
+
+/* Partie texte */
+.about-text {
+    width: 40%;
+    /* 40% de la largeur */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Centre le texte verticalement */
+    padding: 50px;
+    background-color: white;
+    /* Fond blanc pour contraster avec l'image */
+}
+
+.about-text h1 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2.5em;
+    /*color: #004080; */
+    color: #ff6f20;
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Ajustements pour mobiles */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+    }
+
+    .about-image {
+        width: 100%;
+        height: 50vh;
+    }
+
+    .about-text {
+        width: 100%;
+        padding: 30px;
+    }
+}
+
+/* PAGES PROJETS */
+
+.project-container {
+    max-width: 80vw;
+    margin: auto;
+    margin-right: 0px;
+    margin-left: 130px;
+    padding: 0;
+    display: block;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+/* Section de texte et galerie (2/3 de la largeur) */
+.project-content {
+    width: 100%;
+    /* toute la largeur */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 40px;
+    /* Ajoute un espace pour éviter que le contenu ne passe sous l'illustration */
+}
+
+
+/* Illustration placée à droite */
+.project-illustration {
+    width: 35%;
+    /* 1/3 de la largeur */
+    max-height: 90vh;
+    overflow: hidden;
+    position: fixed;
+    right: 20px;
+    /* Fixe l'élément à droite */
+    top: 115px;
+    /* Fixe l'élément en haut */
+}
+
+.project-illustration img {
+    width: 91%;
+    height: 91%;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.3s ease-in-out;
+}
+
+
+/* Texte du projet */
+.project-text {
+    max-width: 50vw;
+    /* ≈ 2/3 de l’écran */
+    font-size: 1.2em;
+    line-height: 1.6;
+    text-align: justify;
+    color: #333;
+    padding: 0px;
+}
+
+.project-text h1 {
+    font-size: 2em;
+    color: #ff6f20;
+}
+
+/* Grille d’images pour le projet */
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 🔥 2 colonnes fixes */
+    grid-auto-rows: auto;
+    /* Permet aux lignes de s’adapter au contenu */
+    gap: 10px;
+    /* Espacement entre les éléments */
+    justify-content: center;
+    /* Centre les éléments */
+    align-items: start;
+}
+
+/* Pour les images et vidéos */
+.project-gallery img,
+.project-gallery video {
+    width: 100%;
+    height: 100%;
+    /* Force une hauteur uniforme */
+    object-fit: cover;
+    /* Remplit l'espace sans distorsion */
+    display: block;
+    border-radius: 0px;
+}
+
+/* Pour les images verticales : elles occupent 2 lignes */
+.project-gallery img.portrait {
+    grid-row: span 2;
+}
+
+/* Pour les vidéos */
+.project-gallery video {
+    grid-column: span 2;
+    /* Occupe 2 colonnes */
+    grid-row: span 2;
+    /* Elle occupe 2 lignes pour plus de hauteur */
+    width: 100%;
+    /* S'assure qu'elle prend bien toute la largeur */
+    height: auto;
+    /* Ajuste la hauteur */
+    object-fit: cover;
+    /* Remplit bien la zone sans distorsion */
+}
+
+/* Effet au survol */
+.project-gallery img:hover {
+    filter: brightness(90%);
+    transform: scale(1);
+}
+
+.custom-video-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+    bottom: 40px;
+    /* Positionne les contrôles sur la vidéo */
+}
+
+.custom-video-controls button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.custom-video-controls input {
+    width: 100px;
+}
+
+/* Ajustement pour mobile */
+@media (max-width: 768px) {
+    .project-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .project-gallery img.portrait {
+        grid-row: span 1;
+    }
+
+    .project-gallery video {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .project-container {
+        margin: 0 auto;
+        padding: 15px;
+        max-width: 95vw;
+    }
+
+    .project-content {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .project-text {
+        max-width: 100%;
+        font-size: 1em;
+        padding: 0 10px;
+    }
+
+    .project-text h1 {
+        font-size: 1.5em;
+    }
+
+    .project-illustration {
+        position: relative;
+        width: 100%;
+        max-height: 250px;
+        top: auto;
+        right: auto;
+        margin-top: 20px;
+    }
+
+    .project-illustration img {
+        width: 100%;
+        height: auto;
+        max-height: 250px;
+        object-fit: contain;
+    }
+}
+
+
+/* MODALES */
+
+.modal {
+    display: none;
+    /* Cachée par défaut */
+    position: fixed;
+    z-index: 1000;
+    /* Toujours au-dessus */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fond sombre semi-transparent */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Image dans la modale */
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Bouton de fermeture */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close:hover {
+    color: #ff6f20;
+    /* Couleur orange au survol */
+}
+
+
+/* GALERIE PHOTO */
+
+.gallery-text {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+}
+
+.grid-gallery {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.grid-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(0%);
+    /* Noir et blanc */
+    transition: filter 0.3s ease-in-out;
+    /* Transition fluide */
+}
+
+/* Gestion des tailles */
+/* Une image horizontale fait la moitié de la hauteur d'une image verticale */
+.grid-gallery.horizontal {
+    grid-row: span 1;
+    /* Prend 1 rangée */
+    height: 200px;
+    /* Hauteur fixe */
+}
+
+.grid-gallery.vertical {
+    grid-row: span 2;
+    /* Prend 2 rangées (donc 2x plus grand qu'une horizontale) */
+    height: 415px;
+}
+
+/* Overlay au survol */
+.grid-gallery .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    opacity: 1;
+    /* Visible par défaut */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.grid-gallery:hover {
+    transform: scale(1);
+}
+
+/* Au survol : on affiche le texte */
+.grid-gallery:hover .overlay span {
+    opacity: 1;
+}
+
+/* MODALE GALERIE PHOTO */
+
+/* FOOTER */
+
+.site-footer {
+    background-color: none;
+    color: #ff6f20;
+    text-align: center;
+    padding: 20px 0;
+    padding-bottom: 10px;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    left: 0;
+}
+
+.footer-content {
+    max-width: 80vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-content p {
+    margin: 10px 0;
+    font-size: 12px;
+}
