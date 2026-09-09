@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeBtn = document.querySelector(".close");
 
     if (modal && modalImg && closeBtn) {
-        document.querySelectorAll(".project-gallery img").forEach(img => {
+        document.querySelectorAll(".project-gallery img, .mini-project-images img").forEach(img => {
             img.addEventListener("click", function () {
                 modal.style.display = "flex";
                 modalImg.src = this.src;
@@ -23,8 +23,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Apparition en fondu de la liste de projets (page d'accueil)
+    const projectList = document.querySelector('.project-list');
+
+    const revealProjects = () => {
+        if (projectList) {
+            projectList.classList.add('is-visible');
+        }
+    };
+
+    if (projectList) {
+        const listObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    revealProjects();
+                }
+            });
+        }, { threshold: 0.05 });
+
+        listObserver.observe(projectList);
+    }
+
     // Scroll Reveal Animation
-    const gridItems = document.querySelectorAll('.grid-item');
+    const gridItems = document.querySelectorAll('.grid-item, .project-row');
 
     if (gridItems.length > 0) {
         // Add scroll-reveal class to all grid items
@@ -96,30 +117,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Logo animation on homepage - wiggle to indicate "about" link
-    const logo = document.querySelector('.logo img');
-    const isHomepage = document.body.classList.contains('homepage');
+    // Menu plein écran (bouton "Menu" / "Fermer")
+    const menuToggle = document.getElementById('menuToggle');
+    const siteMenu = document.getElementById('siteMenu');
 
-    if (logo && isHomepage) {
-        logo.style.opacity = '0';
-        logo.style.transform = 'translateY(-20px)';
-        logo.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    if (menuToggle && siteMenu) {
+        const closeMenu = () => {
+            siteMenu.classList.remove('is-open');
+            menuToggle.classList.remove('is-open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('menu-open');
+        };
 
-        setTimeout(() => {
-            logo.style.opacity = '1';
-            logo.style.transform = 'translateY(0)';
+        const toggleMenu = () => {
+            const isOpen = siteMenu.classList.toggle('is-open');
+            menuToggle.classList.toggle('is-open', isOpen);
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            document.body.classList.toggle('menu-open', isOpen);
+        };
 
-            setTimeout(() => {
-                logo.classList.add('logo-wiggle');
+        menuToggle.addEventListener('click', toggleMenu);
 
-                setTimeout(() => {
-                    logo.classList.remove('logo-wiggle');
-                }, 800);
-            }, 600);
-        }, 100);
+        siteMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
 
-    } else if (logo) {
-        // Simple fade-in for other pages
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') closeMenu();
+        });
+    }
+
+    // Logo fade-in on every page
+    const logo = document.querySelector('.logo-icon img');
+
+    if (logo) {
         logo.style.opacity = '0';
         logo.style.transform = 'translateY(-10px)';
         logo.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
@@ -127,6 +158,85 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             logo.style.opacity = '1';
             logo.style.transform = 'translateY(0)';
+
+            // Une fois l'animation terminée, on retire les styles inline
+            // pour que le :hover en CSS reprenne la main.
+            setTimeout(() => {
+                logo.style.transform = '';
+                logo.style.transition = '';
+                logo.style.opacity = '';
+            }, 500);
         }, 100);
+    }
+
+    // Hero entrance (homepage only): headline settles in gently — a single
+    // orchestrated reveal rather than scattered effects.
+    const heroText = document.querySelector('.hero-text');
+
+    if (heroText) {
+        heroText.style.opacity = '0';
+        heroText.style.transform = 'translateY(16px)';
+        heroText.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                heroText.style.opacity = '1';
+                heroText.style.transform = 'translateY(0)';
+            }, 150);
+        });
+    }
+
+    // Entrée douce du contenu principal (contact, par-ci-par-là, à propos,
+    // pages projets) — même principe que le hero : un seul mouvement
+    // orchestré au chargement.
+    const softEntranceEl = document.querySelector(
+        '.contact-container, .misc-container, .about-page, .project-container'
+    );
+
+    if (softEntranceEl) {
+        softEntranceEl.style.opacity = '0';
+        softEntranceEl.style.transform = 'translateY(16px)';
+        softEntranceEl.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                softEntranceEl.style.opacity = '1';
+                softEntranceEl.style.transform = 'translateY(0)';
+            }, 150);
+        });
+    }
+
+    // Clic sur "Voir les projets" — scroll doux et personnalisé
+    const heroCta = document.querySelector('.hero-cta');
+    const projectsSection = document.getElementById('projets');
+
+    function smoothScrollTo(targetEl, duration) {
+        const startY = window.scrollY;
+        const targetY = startY + targetEl.getBoundingClientRect().top;
+        const distance = targetY - startY;
+        const startTime = performance.now();
+
+        const easeInOutQuad = t => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
+
+        function step(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            window.scrollTo(0, startY + distance * easeInOutQuad(progress));
+            if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+
+    if (heroCta && projectsSection) {
+        heroCta.addEventListener('click', (event) => {
+            event.preventDefault();
+            revealProjects();
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReducedMotion) {
+                projectsSection.scrollIntoView({ behavior: 'auto', block: 'start' });
+            } else {
+                smoothScrollTo(projectsSection, 1300);
+            }
+        });
     }
 });
