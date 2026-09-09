@@ -1,111 +1,113 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Eugénie Fernet</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Eugénie Fernet — Design graphique</title>
+    <meta name="description" content="Portfolio d'Eugénie Fernet, étudiante en design graphique à l'ESAD Amiens. Identités visuelles, affiches, édition et photographie.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Raleway:wght@300;400;500;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="homepage"> <!-- Ajout de la classe homepage -->
 
-    <header>
-        <!-- Section du logo qui sera sticky -->
-        <div class="logo">
-            <a href="a-propos.html">
-                <img src="img/illus/eug.png" alt="Eugénie Fernet">
-            </a>
-        </div>
-        
-        <!-- Icônes en haut à droite -->
-        <div class="icon-links">
-            <ul>
-                <li><a href="https://www.instagram.com/eugenie_graphisme/">
-                    <img src="img/illus/insta.jpg" alt="graphisme">
-                </a></li>
-            </ul>
-        </div>
+<body class="homepage">
+    <header class="site-header">
+        <a href="a-propos.html" class="logo-icon">
+            <img src="img/illus/eug.png" alt="Eugénie Fernet">
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteMenu">
+            <span class="menu-toggle-text"></span>
+        </button>
     </header>
 
-    <main class="grid-container">
-        <a href="gaufrage.html" class="grid-item horizontal">
-            <img src="img/workshop/titre.jpg" alt="workshop">
-            <div class="overlay"><span>GAUFRAGE PARTY</span></div>
+    <nav class="site-menu" id="siteMenu">
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#projets">Projets</a></li>
+            <li><a href="par-ci-par-la.html">Par-ci par-là</a></li>            
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1 class="hero-name">Eugénie Fernet</h1>
+            <p class="hero-tagline">Design graphique, éditorial, photographie &amp; illustration</p>
+            <p class="hero-intro">
+                Étudiante en 4ᵉ année à l'ESAD d'Amiens. <br> en recherche de stage : ) 
+            </p>
+            <a href="#projets" class="hero-cta">Voir les projets</a>
+        </div>
+    </section>
+
+    <main class="project-list" id="projets">
+         <a href="projets/picard.html" class="project-row">
+            <img src="img/picard/affiches-tourisme.jpg" alt="" class="row-thumb">
+            <h2 class="row-title">Ch'train i parle picard</h2>
+            <div class="row-meta"><span class="row-category">Identité visuelle</span><span class="row-year">2026</span></div>
+        </a>       
+        <a href="projets/analog.html" class="project-row">
+            <img src="img/FOAM/11.jpg" alt="" class="row-thumb">
+            <h2 class="row-title">The Analog's Revival</h2>
+            <div class="row-meta"><span class="row-category">Édition</span><span class="row-year">2026</span></div>
         </a>
-        <a href="guinness.html" class="grid-item horizontal">
-            <img src="img/POSTERGUINNESS/26.jpeg" alt="Dessin">
-            <div class="overlay"><span>GUINNESS' POSTER</span></div>
+        <a href="projets/mca.html" class="project-row">
+            <img src="img/MCA/phedre-ptf.jpg" alt="" class="row-thumb">
+            <h2 class="row-title">Show time</h2>
+            <div class="row-meta"><span class="row-category">Affiches</span><span class="row-year">2025/26</span></div>
         </a>
-        <a href="deni.html" class="grid-item vertical">
-            <img src="img/DENI/10.jpeg" alt="aerial">
-            <div class="overlay"><span>DÉNI</span></div>
+        <a href="projets/macupose.html" class="project-row">
+            <img src="img/MACUPOSE/2.jpg" alt="" class="row-thumb">
+            <h2 class="row-title">MaCu Posé</h2>
+            <div class="row-meta"><span class="row-category">Installation</span><span class="row-year">2026</span></div>
         </a>
-        <a href="arnauds.html" class="grid-item horizontal">
-            <img src="img/arnauds/int1.jpeg" alt="Dessin">
-            <div class="overlay"><span>ARNAUDS</span></div>
+        <a href="projets/arnauds.html" class="project-row">
+            <img src="img/arnauds/int1.jpeg" alt="" class="row-thumb">
+            <h2 class="row-title">Arnauds</h2>
+            <div class="row-meta"><span class="row-category">Photographie</span><span class="row-year">2024/25</span></div>
         </a>
-       <!-- <a href="galeriephoto.html" class="grid-item vertical">
-            <img src="img/PHOTOS/7.jpeg" alt="photos">
-            <div class="overlay"><span>GALERIE PHOTO</span></div>
-        </a> -->
-        <a href="aerial.html" class="grid-item vertical">
-            <img src="img/Aerial/affiche1.2.jpg" alt="aerial">
-            <div class="overlay"><span>AERIAL</span></div>
-            </a>
-        <a href="vidaloca.html" class="grid-item vertical">
-            <img src="img/VIDA LOCA/5.jpeg" alt="autoportraits">
-            <div class="overlay"><span>VIDA LOCA</span></div>
+        <a href="projets/vida-loca.html" class="project-row">
+            <img src="img/VIDA LOCA/5.jpeg" alt="" class="row-thumb">
+            <h2 class="row-title">Vida Loca</h2>
+            <div class="row-meta"><span class="row-category">Édition</span><span class="row-year">2025</span></div>
+        </a>                
+        <a href="projets/gaufrage.html" class="project-row">
+            <img src="img/workshop/titre.jpg" alt="" class="row-thumb">
+            <h2 class="row-title">Gaufrage Party</h2>             
+            <div class="row-meta"><span class="row-category">Workshop</span><span class="row-year">2025</span></div>
+            
         </a>
-        <a href="loutres.html" class="grid-item horizontal">
-            <img src="img/DESSIN/4.jpeg" alt="Dessin">
-            <div class="overlay"><span>LA LOUTRE CENDRÉE</span></div>
+        <a href="projets/ineirinn.html" class="project-row">
+            <img src="img/inerinn/_MG_0992.jpg" alt="" class="row-thumb">
+            <h2 class="row-title">In Éirinn</h2>             
+            <div class="row-meta"><span class="row-category">Photographie</span><span class="row-year">2025</span></div>
+            
         </a>
-        <a href="flipside.html" class="grid-item horizontal">
-            <img src="img/flipside/animotifs.gif" alt="Branding">
-            <div class="overlay"><span>FLIP SIDE</span></div>
-             </a>
-        <a href="guinness2.html" class="grid-item vertical">
-                <img src="img/guinness dessins/IMG_1246.png" alt="photos">
-                <div class="overlay"><span>A GUINNESS A DAY</span></div>
-            </a>
-         <a href="toukiter.html" class="grid-item horizontal">
-            <img src="img/TOUKITER/boites1.jpg" alt="Toukiter">
-            <div class="overlay"><span>TOUKITER</span></div>
+        <a href="projets/deni.html" class="project-row">
+             <img src="img/DENI/10.jpeg" alt="" class="row-thumb">
+            <h2 class="row-title">Déni</h2>
+            <div class="row-meta"><span class="row-category">Typographie</span><span class="row-year">2025</span></div>
         </a>
-        <a href="guitare.html" class="grid-item vertical">
-            <img src="img/GUITARE/gui.jpeg" alt="Volume">
-            <div class="overlay"><span>FRANCE GALL</span></div>
+        <a href="projets/guinness-day.html" class="project-row">
+            <img src="img/guinness dessins/IMG_1246.png" alt="" class="row-thumb">
+            <h2 class="row-title">A Guinness A Day</h2>
+            <div class="row-meta"><span class="row-category">Affiche</span><span class="row-year">2025</span></div>
         </a>
-        <a href="treppenwitz.html" class="grid-item horizontal">
-            <img src="img/TREPPENWITZ/mockt1.jpeg" alt="Treppenwitz">
-            <div class="overlay"><span>TREPPENWITZ</span></div>
-        </a>
-        <a href="tt2.html" class="grid-item horizontal">
-            <img src="img/tennis tournaments 2/4.jpeg" alt="Magazine">
-            <div class="overlay"><span>TENNIS TOURNAMENTS 2</span></div>
-        </a>
-        <a href="tt1.html" class="grid-item vertical">
-            <img src="img/tennis tournaments 1/4.jpeg" alt="Magazine">
-            <div class="overlay"><span>TENNIS TOURNAMENTS 1</span></div>
-        </a>
-         </a>
-        <a href="livres.html" class="grid-item horizontal">
-        <img src="img/LIVRES/1.jpeg" alt="Magazine">
-        <div class="overlay"><span>COUVERTURE DE LIVRES</span></div>
-         </a>
-        </a>
-         <!-- <a href="alterego.html" class="grid-item vertical">
-            <img src="img/alter ego/3356.jpeg" alt="autoportraits">
-            <div class="overlay"><span>ALTER-EGO</span></div>
-        </a> -->
     </main>
 
     <footer class="site-footer">
         <div class="footer-content">
-            <p>&copy; 2025 Eugénie FERNET - Tous droits réservés</p>
+            <p>&copy; 2026 Eugénie FERNET - Tous droits réservés</p>
         </div>
     </footer>
 
+   <script src="js/script.js"></script>
 </body>
+
 </html>
 
