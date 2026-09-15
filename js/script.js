@@ -4,21 +4,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalImg = document.getElementById("modalImg");
     const closeBtn = document.querySelector(".close");
 
+    const closeModal = () => {
+        if (modal) {
+            modal.style.display = "none";
+            document.body.classList.remove('modal-open');
+        }
+    };
+
     if (modal && modalImg && closeBtn) {
         document.querySelectorAll(".project-gallery img, .mini-project-images img").forEach(img => {
             img.addEventListener("click", function () {
                 modal.style.display = "flex";
                 modalImg.src = this.src;
+                modalImg.alt = this.alt || "Vue agrandie";
+                document.body.classList.add('modal-open');
             });
         });
 
-        closeBtn.addEventListener("click", function () {
-            modal.style.display = "none";
-        });
+        closeBtn.addEventListener("click", closeModal);
 
         modal.addEventListener("click", function (event) {
             if (event.target === modal) {
-                modal.style.display = "none";
+                closeModal();
+            }
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" && modal.style.display === "flex") {
+                closeModal();
             }
         });
     }
@@ -45,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Scroll Reveal Animation
-    const gridItems = document.querySelectorAll('.grid-item, .project-row');
+    const gridItems = document.querySelectorAll('.project-row');
 
     if (gridItems.length > 0) {
         // Add scroll-reveal class to all grid items
@@ -202,6 +215,16 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 softEntranceEl.style.opacity = '1';
                 softEntranceEl.style.transform = 'translateY(0)';
+
+                // Une fois l'animation terminée, on retire les styles inline :
+                // un transform qui traîne sur cet élément casserait le
+                // position:fixed de tout ce qu'il contient (ex : la modale
+                // d'agrandissement des images sur les pages projets).
+                setTimeout(() => {
+                    softEntranceEl.style.transform = '';
+                    softEntranceEl.style.transition = '';
+                    softEntranceEl.style.opacity = '';
+                }, 700);
             }, 150);
         });
     }

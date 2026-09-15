@@ -4,30 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galerie photo</title>
+    <title>Galerie photo — Eugénie Fernet</title>
+    <link rel="icon" type="image/png" href="../img/illus/eug.png">
     <link rel="stylesheet" href="../css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body class="inner-page">
 
-    <header>
-        <a href="../index.html" class="back-arrow">←</a>
-        <div class="logo">
-            <a href="../index.html">
-                <img src="../img/illus/eugpdg.jpg" alt="Eugénie Fernet">
-            </a>
-        </div>
-
-        <!-- Icônes en haut à droite -->
-        <div class="icon-links">
-            <ul>
-                <li><a href="https://www.instagram.com/eugenie_psd/">
-                        <img src="../img/illus/insta.jpg" alt="Photographie">
-                    </a></li>
-            </ul>
-        </div>
+    <header class="site-header">
+        <a href="../index.html" class="logo-icon">
+            <img src="../img/illus/eug.png" alt="Eugénie Fernet">
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteMenu">
+            <span class="menu-toggle-text"></span>
+        </button>
     </header>
+
+    <nav class="site-menu" id="siteMenu">
+        <ul>
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="../index.html#projets">Projets</a></li>
+            <li><a href="../par-ci-par-la.html">Par-ci par-là</a></li>
+            <li><a href="../a-propos.html">À propos</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
     <div class="project-text">
         <div class="gallery-text">
@@ -237,47 +241,31 @@
 
     <footer class="site-footer">
         <div class="footer-content">
-            <p>&copy; 2025 Eugénie FERNET - Tous droits réservés</p>
+            <p>&copy; 2026 Eugénie FERNET - Tous droits réservés</p>
         </div>
     </footer>
 
-    <!-- Modale spécifique pour la galerie photo -->
-    <div id="photomodal" class="photomodal">
-        <span class="close-photomodal">&times;</span>
-        <img class="photomodal-content" id="modal-image">
+    <!-- Modale d'affichage des images -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImg">
     </div>
 
+    <script src="../js/script.js"></script>
+
     <script>
-        // Sélection de la modale spécifique pour la galerie photo
-        const photoModal = document.getElementById("photomodal");
-        const modalImg = document.getElementById("modal-image");
-        const closePhotoModal = document.querySelector(".close-photomodal");
-
-        // Sélection des images de la galerie
-        const galleryImages = document.querySelectorAll(".grid-gallery img");
-
-        // Ouvrir la modale avec l'image cliquée
-        galleryImages.forEach(img => {
-            img.addEventListener("click", function () {
-                photoModal.style.display = "flex";
-                modalImg.src = this.getAttribute("data-src") || this.src;
+        // Support pour data-src sur la galerie photo
+        document.querySelectorAll('.grid-gallery img').forEach(img => {
+            img.addEventListener('click', function () {
+                const modal = document.getElementById('imageModal');
+                const modalImg = document.getElementById('modalImg');
+                if (modal && modalImg) {
+                    modal.style.display = 'flex';
+                    modalImg.src = this.getAttribute('data-src') || this.src;
+                }
             });
         });
-
-        // Fermer la modale en cliquant sur (X)
-        closePhotoModal.addEventListener("click", () => {
-            photoModal.style.display = "none";
-        });
-
-        // Fermer la modale en cliquant en dehors de l'image
-        photoModal.addEventListener("click", (e) => {
-            if (e.target === photoModal) {
-                photoModal.style.display = "none";
-            }
-        });
     </script>
-
-
 </body>
 
 </html>
